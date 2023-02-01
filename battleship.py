@@ -1,6 +1,7 @@
 # https://bigmonty12.github.io/battleship
 import random
 
+# opening 
 def welcome_message():
     print("Welcome to Battleship")
     print("=====================")
@@ -15,13 +16,13 @@ def welcome_message():
 def build_board(size):
     return [["O" for count in range(size)] for count in range(size)]
 
-# remove all commas and brackets to make the board 'clean;
+# remove all commas and brackets to make the board 'clean';
 def print_board(board):
     for k in board:
         print(*k)
 
 def build_ship(size):
-    # ship 1 len is between 2 and len of board
+    # ship 1 length is between 2 and length of board
     len_ship = random.randint(2, size)
     orientation = random.randint(0,1)
 
@@ -38,14 +39,15 @@ def build_ship(size):
         coords = tuple(zip(row_ship, col_ship))
     return list(coords)
 
-# user inputs their guess, function converts their guess to work with the
-# 0-based indexing
+# user inputs their guess, function converts their guess to work with the 0-based indexing
 def user_guess():
     print()
     row = int(input("Enter a row: ")) - 1
     col = int(input("Enter a column: ")) - 1
     return(row, col)
 
+# update the board with X if user hits a ship
+# M if they already guessed a coordinate
 def update_board(guess, board, ship, guesses):
     if guess in guesses:
         print("You already guess that coordinate.")
